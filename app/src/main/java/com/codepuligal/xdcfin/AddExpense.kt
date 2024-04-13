@@ -39,6 +39,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -77,7 +78,15 @@ fun AddExpense(navController: NavController) {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 }) {
-                Image(painter = painterResource(id = R.drawable.ic_back), contentDescription = null)
+
+                Image(
+                    painter = painterResource(id = R.drawable.ic_back),
+                    contentDescription = null, // Set content description
+                    modifier = Modifier.clickable {
+                        navController.popBackStack() // Navigate back on click
+                    }
+                )
+
                 ExpenseTextView(
                     text = "Add Expense",
                     fontSize = 20.sp,
