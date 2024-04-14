@@ -83,7 +83,7 @@ fun AddExpense(navController: NavController) {
                     painter = painterResource(id = R.drawable.ic_back),
                     contentDescription = null, // Set content description
                     modifier = Modifier.clickable {
-                        navController.popBackStack() // Navigate back on click
+                        navController.navigateUp()// Navigate back on click
                     }
                 )
 
@@ -200,21 +200,29 @@ fun DataForm(modifier: Modifier, onAddExpenseClick: (model: ExpenseEntity) -> Un
         Spacer(modifier = Modifier.size(8.dp))
         //type
 
-        Button(onClick = {
-            val amountValue = amount.value.toDoubleOrNull() ?: 0.0
-            val finalAmount = if (type.value == "Expense") -amountValue else amountValue
-            val model = ExpenseEntity(
-                null,
-                name.value,
-                finalAmount,
-                Utils.formatDateToHumanReadableForm(date.value),
-                category.value,
-                type.value
+        Button(
+            onClick = {
+                val amountValue = amount.value.toDoubleOrNull() ?: 0.0
+                val finalAmount = if (type.value == "Expense") -amountValue else amountValue
+                val model = ExpenseEntity(
+                    null,
+                    name.value,
+                    finalAmount,
+                    Utils.formatDateToHumanReadableForm(date.value),
+                    category.value,
+                    type.value
+                )
+                onAddExpenseClick(model)
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            ExpenseTextView(
+                text = if (type.value == "Expense") "Add Expense" else "Add Income",
+                fontSize = 14.sp,
+                color = Color.White
             )
-            onAddExpenseClick(model)
-        }, modifier = Modifier.fillMaxWidth()) {
-            ExpenseTextView(text = "Add Expense", fontSize = 14.sp, color = Color.White)
         }
+
     }
     if (dateDialogVisibility.value) {
         ExpenseDatePickerDialog(onDateSelected = {

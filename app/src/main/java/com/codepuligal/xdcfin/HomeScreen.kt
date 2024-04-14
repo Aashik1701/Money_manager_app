@@ -44,6 +44,7 @@ import com.patrykandpatrick.vico.core.component.marker.MarkerComponent
 import android.graphics.Typeface
 import android.text.Layout
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.res.colorResource
 import com.patrykandpatrick.vico.compose.component.fixed
 import com.patrykandpatrick.vico.compose.component.rememberLayeredComponent
 import com.patrykandpatrick.vico.compose.component.rememberLineComponent
@@ -83,7 +84,7 @@ fun HomeScreen(navController: NavController) {
                     end.linkTo(parent.end)
                 }) {
                 Column(modifier = Modifier.align(Alignment.CenterStart)) {
-                    ExpenseTextView(text = "Good Afernoon", fontSize = 16.sp, color = Color.White)
+                    ExpenseTextView(text = "Good Afternoon", fontSize = 16.sp, color = Color.White)
                     ExpenseTextView(
                         text = "Mohammed Ashlab",
                         fontSize = 20.sp,
@@ -134,7 +135,7 @@ fun HomeScreen(navController: NavController) {
                     .size(48.dp)
                     .clip(CircleShape)
                     .clickable {
-                        navController.navigate("/add")
+                        navController.navigate("add")
                     }
             )
         }
@@ -147,13 +148,14 @@ fun CardItem(
     modifier: Modifier,
     balance: String, income: String, expense: String
 ) {
+    val backgroundColor = colorResource(id = R.color.bg)
     Column(
         modifier = modifier
             .padding(16.dp)
             .fillMaxWidth()
             .height(200.dp)
             .clip(RoundedCornerShape(16.dp))
-            .background(Zinc)
+            .background(backgroundColor)
             .padding(16.dp)
     ) {
         Box(
@@ -183,16 +185,16 @@ fun CardItem(
             CardRowItem(
                 modifier = Modifier
                     .align(Alignment.CenterStart),
-                title = "Income",
-                amount = income,
+                title = "Expense",
+                amount = expense,
                 imaget = R.drawable.ic_income
             )
             Spacer(modifier = Modifier.size(8.dp))
             CardRowItem(
                 modifier = Modifier
                     .align(Alignment.CenterEnd),
-                title = "Expense",
-                amount = expense,
+                title = "Income",
+                amount = income,
                 imaget = R.drawable.ic_expense
             )
         }
@@ -220,7 +222,7 @@ fun TransactionList(modifier: Modifier, list: List<ExpenseEntity>, viewModel: Ho
             }
         }
         items(list) { item ->
-            val icon = viewModel?.getItemIcon(item)
+            val icon = viewModel.getItemIcon(item)
             TransactionItem(
                 title = item.title,
                 amount = item.amount.toString(),

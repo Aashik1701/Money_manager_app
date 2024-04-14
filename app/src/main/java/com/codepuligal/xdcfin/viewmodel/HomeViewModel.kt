@@ -37,12 +37,14 @@ class HomeViewModel(val dao: ExpenseDao) : ViewModel() {
     fun getTotalIncome(list: List<ExpenseEntity>): String {
         var totalIncome = 0.0
         for (expense in list) {
+            // Check if the transaction type is "Income"
             if (expense.type == "Income") {
                 totalIncome += expense.amount
             }
         }
         return "$ ${Utils.formatToDecimalValue(totalIncome)}"
     }
+
 
     fun getItemIcon(item: ExpenseEntity): Int {
         return if (item.category == "Paypal") {
