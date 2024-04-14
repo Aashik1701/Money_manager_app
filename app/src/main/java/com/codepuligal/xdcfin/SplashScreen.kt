@@ -41,6 +41,7 @@ fun splashScreen(navController: NavHostController) {
                     .padding(top = 16.dp)
                     .animateContentSize()
             )
+            //hi
             CircularProgressIndicator(
                 color = Color.White,
                 modifier = Modifier
