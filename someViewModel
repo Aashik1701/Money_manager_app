@@ -1,0 +1,48 @@
+@Composable
+fun SomeModelScreen(viewModel: SomeViewModel) {
+    val context = LocalContext.current
+    val ethereum = viewModel.ethereum
+    val dapp = viewModel.dapp
+
+    // Use LaunchedEffect to execute the connection logic once when the composable is first launched
+    LaunchedEffect(Unit) {
+        ethereum.connect(dapp) { result ->
+            if (result is RequestError) {
+                Log.e(TAG, "Ethereum connection error: ${result.message}")
+            } else {
+                Log.d(TAG, "Ethereum connection result: $result")
+            }
+        }
+    }
+
+    // UI elements can be added here to display while the connection is being established
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        CircularProgressIndicator() // Show loading indicator while connecting
+    }
+}
+
+class SomeViewModel(private val repository: ApplicationRepository) {
+    val ethereum = Ethereum(LocalContext.current)
+    val dapp = Dapp("Droid Dapp", "https://droiddapp.com")
+}
+@AndroidEntryPoint
+class MainActivity : ComponentActivity() {
+    private val viewModel: SomeViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            ExpenseTrackerAndroidTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+                    SomeModelScreen(viewModel)
+                }
+            }
+        }
+    }
+}

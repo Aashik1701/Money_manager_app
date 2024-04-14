@@ -1,0 +1,34 @@
+// Function to create Ethereum transaction request
+fun createTransactionRequest(ethereum: Ethereum, to: String, amount: String): EthereumRequest {
+    val from = ethereum.selectedAddress
+    val params: Map<String, Any> = mapOf(
+        "from" to from,
+        "to" to to,
+        "amount" to amount
+    )
+    return EthereumRequest(
+        method = EthereumMethod.ETH_SEND_TRANSACTION.value,
+        params = listOf(params)
+    )
+}
+
+// Function to handle Ethereum request result
+fun handleTransactionResult(result: Any?) {
+    if (result is RequestError) {
+        // handle error
+    } else {
+        Log.d(TAG, "Ethereum transaction result: $result")
+    }
+}
+
+// Define transaction parameters
+val to = "0x0000000000000000000000000000000000000000"
+val amount = "0x01"
+
+// Create transaction request
+val transactionRequest = createTransactionRequest(ethereum, to, amount)
+
+// Make transaction request
+ethereum.sendRequest(transactionRequest) { result ->
+    handleTransactionResult(result)
+}
