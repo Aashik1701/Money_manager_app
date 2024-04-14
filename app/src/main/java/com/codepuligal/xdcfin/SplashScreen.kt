@@ -51,7 +51,7 @@ fun splashScreen(navController: NavHostController) {
 
             LaunchedEffect(Unit) {
                 delay(2000) // Delay for 2 seconds
-                navController.navigate("home") // Navigate to the home screen
+                navController.navigate("get_started") // Navigate to the home screen
             }
         }
     }

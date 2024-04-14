@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Expense Tracker Android</string>
+    <string name="wallet">wallet</string>
+    <string name="onboarding_image_description">Onboarding Screen Image</string>
+    <string name="onboarding_punchline">Spend Smarter, Save Better</string>
+    <string name="get_started">Get Started</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="login">Login</string>
 </resources>

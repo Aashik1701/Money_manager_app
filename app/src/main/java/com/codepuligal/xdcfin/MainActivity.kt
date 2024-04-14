@@ -26,12 +26,18 @@ class MainActivity : ComponentActivity() {
                         composable(route = "splash") {
                             splashScreen(navController)
                         }
+
+                        composable("get_started"){
+                            getStarted(navController)
+                        }
                         composable(route = "home") {
                             HomeScreen(navController)
                         }
                         composable(route = "add") {
                             AddExpense(navController)
                         }
+
+
                     }
                 }
             }
