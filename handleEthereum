@@ -1,0 +1,29 @@
+// Function to create EthereumRequest for signing typed data
+fun createSignTypedDataRequest(ethereum: Ethereum, message: String): EthereumRequest {
+    val from = ethereum.selectedAddress
+    val params: List<String> = listOf(from, message)
+    return EthereumRequest(
+        method = EthereumMethod.ETH_SIGN_TYPED_DATA_V4.value,
+        params = params
+    )
+}
+
+// Function to handle Ethereum request result
+fun handleEthereumRequestResult(result: Any?) {
+    if (result is RequestError) {
+        Log.e(TAG, "Ethereum sign error: ${result.message}")
+    } else {
+        Log.d(TAG, "Ethereum sign result: $result")
+    }
+}
+
+// Create message
+val message = "{\"domain\":{\"chainId\":\"${ethereum.chainId}\",\"name\":\"Ether Mail\",\"verifyingContract\":\"0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC\",\"version\":\"1\"},\"message\":{\"contents\":\"Hello, Busa!\",\"from\":{\"name\":\"Kinno\",\"wallets\":[\"0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826\",\"0xDeaDbeefdEAdbeefdEadbEEFdeadbeEFdEaDbeeF\"]},\"to\":[{\"name\":\"Busa\",\"wallets\":[\"0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB\",\"0xB0BdaBea57B0BDABeA57b0bdABEA57b0BDabEa57\",\"0xB0B0b0b0b0b0B000000000000000000000000000\"]}]},\"primaryType\":\"Mail\",\"types\":{\"EIP712Domain\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"version\",\"type\":\"string\"},{\"name\":\"chainId\",\"type\":\"uint256\"},{\"name\":\"verifyingContract\",\"type\":\"address\"}],\"Group\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"members\",\"type\":\"Person[]\"}],\"Mail\":[{\"name\":\"from\",\"type\":\"Person\"},{\"name\":\"to\",\"type\":\"Person[]\"},{\"name\":\"contents\",\"type\":\"string\"}],\"Person\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"wallets\",\"type\":\"address[]\"}]}}"
+
+// Create sign request
+val signRequest = createSignTypedDataRequest(ethereum, message)
+
+// Make request
+ethereum.sendRequest(signRequest) { result ->
+    handleEthereumRequestResult(result)
+}
