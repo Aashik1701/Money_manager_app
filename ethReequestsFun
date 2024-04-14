@@ -1,0 +1,10 @@
+val dapp = Dapp("Droid Dapp", "https://droiddapp.com")
+
+        // This is the same as calling eth_requestAccounts
+        ethereumViewModel.connect(dapp) { result ->
+            if (result is RequestError) {
+                Log.e(TAG, "Ethereum connection error: ${result.message}")
+            } else {
+                Log.d(TAG, "Ethereum connection result: $result")
+            }
+        }
