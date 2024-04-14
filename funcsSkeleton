@@ -1,0 +1,23 @@
+var balance: String? = null
+
+// Create parameters
+val params: List<String> = listOf(
+    ethereum.selectedAddress,
+    // "latest", "earliest" or "pending" (optional)
+    "latest"
+)
+
+// Create request
+val getBalanceRequest = EthereumRequest(
+    method = EthereumMethod.ETHGETBALANCE.value,
+    params = params
+)
+
+// Make request
+ethereum.sendRequest(getBalanceRequest) { result ->
+    if (result is RequestError) {
+        // handle error
+    } else {
+        balance = result
+    }
+}
