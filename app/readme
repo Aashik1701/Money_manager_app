@@ -1,0 +1,44 @@
+
+TEAM NAME: CODE PULIGAL
+VENUE: DIMO HACK VIT-AP
+
+PROBLEM STATEMENT:
+
+Many users in the XDC Network community face challenges in effectively managing their finances, tracking expenses, and saving money.Traditional financial management tools often lack integration with blockchain networks, making it difficult for users to leverage the benefits of decentralized finance (DeFi) platforms. Additionally, existing solutions may lack transparency, security, and user-friendly interfaces, hindering widespread adoption and engagement within the XDC community.
+
+PROPOSED SOLUTION:
+
+Our solution is a decentralized finance (DeFi) app called XDC Wallet Plus, built on the XDC Network, specifically tailored to address the financial needs of the XDC community. XDC Wallet Plus offers comprehensive features for financial management, expense tracking, and savings optimization, all seamlessly integrated with the XDC Network.
+
+TECHNOLOGY USED:
+
+-> Jetpack Compose
+-> Kotlin
+-> Smart Contracts
+-> SQLite
+-> Figma
+-> Firebase
+-> XDC Products
+
+KEY FEATURES;
+
+1. Integrated Wallet: XDC Wallet Plus serves as a secure and user-friendly wallet for storing, sending, and receiving XDC tokens and other supported cryptocurrencies. Users can manage their digital assets with ease, leveraging the speed and efficiency of the XDC Network.
+
+2. Expense Tracking: The app enables users to track their expenses in real-time, categorize transactions, and set budget limits for different spending categories. Transactions are recorded immutably on the XDC blockchain, providing transparency and auditability.
+
+3. Savings Optimization: XDC Wallet Plus incentivizes users to save money by offering rewards and incentives in the form of XDC tokens for achieving savings goals. Users can earn additional rewards through staking XDC tokens or participating in liquidity pools on the XDC Network.
+
+4. DeFi Integration: The app seamlessly integrates with decentralized finance (DeFi) platforms on the XDC Network, allowing users to access a wide range of financial services such as lending, borrowing, staking, and yield farming directly from their wallet interface.
+
+5. Secure and Transparent: XDC Wallet Plus prioritizes security and transparency, leveraging the inherent features of the XDC Network, including its consensus mechanism, smart contract capabilities, and immutable ledger. Users can trust that their financial data is secure and tamper-proof.
+
+Unique Features Leveraging the XDC Network:
+
+1. High Transaction Speed: XDC Wallet Plus harnesses the high transaction speed of the XDC Network, ensuring seamless and efficient processing of financial transactions, including expense tracking, rewards distribution, and DeFi interactions.
+
+2. Low Transaction Fees: With minimal transaction fees on the XDC Network, XDC Wallet Plus offers cost-effective solutions for users, enabling microtransactions, frequent interactions with DeFi protocols, and seamless fund transfers without incurring high costs.
+
+3. Smart Contract Capabilities: XDC Wallet Plus leverages the smart contract capabilities of the XDC Network to automate various financial processes, such as reward distribution, savings goal tracking, and DeFi interactions, ensuring reliability, transparency, and efficiency.
+
+
+
